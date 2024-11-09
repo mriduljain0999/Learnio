@@ -27,7 +27,7 @@ document.querySelector(".logout").addEventListener("click",function(){
 })
 
 async function fetch(){
-    const courses = await axios.get("http://localhost:3000/user/purchases",{
+    const courses = await axios.get("https://learnio-api.vercel.app/user/purchases",{
         headers:{
             token:localStorage.getItem("token")
         }
