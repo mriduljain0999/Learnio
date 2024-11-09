@@ -27,7 +27,7 @@ document.querySelector(".logout").addEventListener("click",function(){
 })
 
 async function fetch(){
-    const courses = await axios.get("http://localhost:3000/course/preview")
+    const courses = await axios.get("https://learnio-api.vercel.app/course/preview")
     render(courses.data);
 }
 
@@ -66,7 +66,7 @@ async function render(courses){
         divImg.classList.add("courseImg")
         divImg.appendChild(img)
 
-        const adminName = await axios.post("http://localhost:3000/admin/username",{
+        const adminName = await axios.post("https://learnio-api.vercel.app/admin/username",{
             adminID:courses[i].creatorID
         })
         username.innerHTML = adminName.data
@@ -100,7 +100,7 @@ async function render(courses){
 
 async function purchaseCourse(courseID){
     try{
-        const response = await axios.post("http://localhost:3000/course/purchase",{
+        const response = await axios.post("https://learnio-api.vercel.app/course/purchase",{
             courseID
         },{
             headers:{
