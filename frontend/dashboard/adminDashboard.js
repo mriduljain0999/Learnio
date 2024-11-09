@@ -30,7 +30,7 @@ document.querySelector(".logout").addEventListener("click",function(){
 })
 
 async function fetch(){
-    const courses = await axios.get("http://localhost:3000/admin/course/bulk",{
+    const courses = await axios.get("https://learnio-api.vercel.app/admin/course/bulk",{
         headers:{
             token:localStorage.getItem("token")
         }
@@ -87,7 +87,7 @@ function render(courses){
 
 async function deleteCourse(courseID){
     try{
-        const response = await axios.delete("http://localhost:3000/admin/course", {
+        const response = await axios.delete("https://learnio-api.vercel.app/admin/course", {
             headers: {
                 token: localStorage.getItem("token")
             },
