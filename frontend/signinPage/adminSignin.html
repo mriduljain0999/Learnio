@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>Learnio - Admin signin</title>
+        <link rel="stylesheet" href="signin.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="brand-name">Learnio.</h1>
+                <div class="main">
+                    <h2>Welcome back</h2>
+                    <div class="input-container">
+                        <label for="email">Email address</label>
+                        <input class="email" type="email" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="password">Your Password</label>
+                        <input class="password" type="password" required>
+                    </div>
+                    <button class="signin">Log in</button>
+                    <p>By continuing, you agree to the <span class="terms">Term of use</span> and <span class="privacy">Privacy Policy.</span></p>
+                </div>
+                <div class="new">
+                    <div class="smallLine"></div>
+                    <h3>New to our community</h3>
+                    <div class="smallLine"></div>
+                </div>
+                <button class="signup">Create an account</button>
+                <div class="line"></div>
+                <div class="footer">
+                    <p class="help">Help Center</p>
+                    <p class="terms">Terms of Service</p>
+                    <p class="privacy">Privacy Policy</p>
+                    <p>&copy;2024Learnio.</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.querySelector(".brand-name").addEventListener("click",function(){
+                window.location.href = "../welcomePage/index.html";
+            })
+            document.querySelectorAll(".terms").forEach(function(element) {
+                element.addEventListener("click", function(){
+                    window.location.href = "../signupPage/terms.txt";
+                });
+            });
+            document.querySelectorAll(".privacy").forEach(function(element) {
+                element.addEventListener("click", function(){
+                    window.location.href = "../signupPage/privacy.txt";
+                });
+            });
+            document.querySelector(".help").addEventListener("click",function(){
+                window.location.href = "help-center.txt";
+            })
+            document.querySelector(".signup").addEventListener("click",function(){
+                window.location.href = "../signupPage/adminSignup.html"
+            })
+            document.querySelector(".signin").addEventListener("click",async function(){
+                try{
+
+                    const response = await axios.post("http://localhost:3000/admin/signin",{
+                        email:document.querySelector(".email").value,
+                        password:document.querySelector(".password").value
+                    });
+                    localStorage.setItem("token",response.data);
+                    window.location.href = "../dashboard/adminDashboard.html"
+                }catch(e){
+                    alert("Error signing in!")
+                }
+            })
+        </script>
+    </body>
+</html>

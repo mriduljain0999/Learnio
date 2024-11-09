@@ -1,0 +1,30 @@
+</html>
+
+<html>
+    <head>
+        <title>Learnio</title>
+        <link rel="stylesheet" href="index.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <div class="nav">
+                <h1 class="brand-name">Learnio.</h1>
+            </div>
+            <div class="main">
+                <h1>Walk the path to mastery with us</h1>
+                <p>Discover a world of knowledge at your fingertips! Our expertly crafted courses are designed to help you master new skills.</p>
+                <button onclick="render()">Get started</button>
+            </div>
+        </div>
+        <script>
+            function render(){
+                window.location.href = "../signupPage/userSignup.html";
+            }
+            document.querySelector(".brand-name").addEventListener("click",function(){
+                window.location.href = "index.html";
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <title>Learnio - Admin Signup</title>
+        <link rel="stylesheet" href="adminSignup.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div class="nav">
+            <h1 class="brand-name">Learnio.</h1>
+            <div class="userType">
+                <p class="user">User</p>
+                <p class="admin">Admin</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="section1">
+                <h1>Connect with us</h1>
+                <p>Create courses in your area of expertise and grant certifications</p>
+                <img src="signupImg.png" alt="">
+            </div>
+            <div class="signup-container">
+                <h2>Sign up now</h2>
+                <div class="name">
+                    <div class="input-container">
+                        <label for="first-name">First name</label>
+                        <input class="firstName" type="text" name="first-name" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="last-name">Last name</label>
+                        <input class="lastName" type="text" name="last-name" required>
+                    </div>
+                </div>
+                <div class="input-container">
+                    <label for="email">Email</label>
+                    <input class="email" type="email" name="email" required>
+                </div>
+                <div class="input-container">
+                    <label for="password">Password</label>
+                    <input class="password" type="password" name="password" required>
+                </div>
+                <div class="checkbox">
+                    <input class="req-check" type="checkbox" name="check" required>
+                    <label class="checkbox" for="check">By creating an account, I agree to our <span class="terms">Term of service</span> and <span class="privacy">Privacy policy</span></label>
+                </div>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox" name="check">
+                    <label class="checkbox" for="check">By creating an account, I am also concenting to receive SMS, messages and emails, including product new feature updates, events and marketing promotions.</label>
+                </div>
+                <div class="btn-class">
+                    <button>Sign up</button>
+                    <p>Already have an account? <span class="signin">Log in</span></p>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.querySelector(".admin").addEventListener("click",function(){
+                window.location.href = "adminSignup.html"
+            })
+            document.querySelector(".user").addEventListener("click",function(){
+                window.location.href = "userSignup.html"
+            })
+            document.querySelector(".brand-name").addEventListener("click",function(){
+                window.location.href = "../welcomePage/index.html";
+            })
+            document.querySelector(".terms").addEventListener("click",function(){
+                window.location.href = "terms.txt";
+            })
+            document.querySelector(".privacy").addEventListener("click",function(){
+                window.location.href = "privacy.txt";
+            })
+            document.querySelector(".signin").addEventListener("click",function(){
+                window.location.href = "../signinPage/adminSignin.html"
+            })
+            document.querySelector("button").addEventListener("click",async function(){
+                try{
+                    let firstName = document.querySelector(".firstName").value;
+                    let lastName = document.querySelector(".lastName").value;
+                    let email = document.querySelector(".email").value;
+                    let password = document.querySelector(".password").value;
+                    let checkbox = document.querySelector(".req-check");
+                    if(!checkbox.checked){
+                        alert("You must agree to Terms of service and privacy!")
+                        return;
+                    }
+                    const response = await axios.post("http://localhost:3000/admin/signup",{
+                        firstName,lastName,email,password
+                    })
+                    alert(response.data);
+                    window.location.href = "../signinPage/adminSignin.html"
+
+                }catch(e){
+                    console.log(e);
+                    alert("Error signing up!");
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+- welcome page to ask whether the person is user or admin ✅
+- then create a signup page for both user and admin ✅
+- then a signin page ✅
+
+- person is an user, show all purchased courses of user
+- user clicks on course then show all contents of course 
+
+- person is an admin show all created courses
+- edit course/create new course
+- inside course edit/create new content
+
+some other functionalities
+- logout button (both user and admin)

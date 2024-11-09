@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>Admin | Create</title>
+        <link rel="stylesheet" href="create.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="cross">&#10005;</div>
+            </div>
+            <div class="main">
+                <h1>Tell us about your course</h1>
+                <p>We'll use this information to customize your course. You can change it any time.</p>
+                <div class="input-container">
+                    <label for="title">Course title</label>
+                    <input class="title" type="text" placeholder="Give it a name">
+                </div>
+                <div class="input-container">
+                    <label for="description">Describe your course</label>
+                    <textarea name="description" class="description" placeholder="Write a thorough description of what your course will contain."></textarea>
+                </div>
+            </div>
+            <div class="footer">
+                <input class="price" type="text" placeholder="Price in ₹">
+                <div class="publish">Publish</div>
+            </div>
+        </div>
+
+        <script>
+            document.querySelector(".cross").addEventListener("click",function(){
+                window.location.href = "adminDashboard.html"
+            })
+            document.querySelector(".publish").addEventListener("click",async function(){
+                try{
+                    const randomNumber = Math.floor(Math.random() * 7) + 1;
+                    const imageURL = `coursesImage/${randomNumber}.png`;
+                    console.log(typeof(imageURL))
+                    const response = await axios.post("http://localhost:3000/admin/course",{
+                        title:document.querySelector(".title").value,
+                        description:document.querySelector(".description").value,
+                        price:document.querySelector(".price").value,
+                        imageURL:`coursesImage/${randomNumber}.png`
+                    },{
+                        headers:{
+                            token:localStorage.getItem("token")
+                        }
+                    })
+                    alert("Course created successfully");
+                    window.location.href = "adminDashboard.html"
+                }catch(e){
+                    alert("Error creating course!")
+                }
+            })
+        </script>
+    </body>
+</html>
