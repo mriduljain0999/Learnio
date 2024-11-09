@@ -83,7 +83,7 @@
                         alert("You must agree to Terms of service and privacy!")
                         return;
                     }
-                    const response = await axios.post("http://localhost:3000/admin/signup",{
+                    const response = await axios.post("https://learnio-api.vercel.app/admin/signup",{
                         firstName,lastName,email,password
                     })
                     alert(response.data);
