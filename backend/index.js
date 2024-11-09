@@ -27,8 +27,8 @@ const app = express();
 app.use(express.json());
 app.use(cors(
     {
-        origin: ["https://learnio-api.vercel.app"],
-        methods: ["POST", "GET"],
+        origin: [""],
+        methods: ["POST", "GET", "PUT", "DELETE"],
         credentials: true
     }
 ));
