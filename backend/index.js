@@ -27,7 +27,7 @@ const app = express();
 app.use(express.json());
 app.use(cors(
     {
-        origin: ["https://learnio-lemon.vercel.app/"],
+        origin: ["https://learnio-lemon.vercel.app"],
         methods: ["POST", "GET", "PUT", "DELETE"],
         credentials: true
     }
