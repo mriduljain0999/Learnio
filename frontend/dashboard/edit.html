@@ -37,7 +37,7 @@
                     const randomNumber = Math.floor(Math.random() * 7) + 1;
                     const imageURL = `coursesImage/${randomNumber}.png`;
                     console.log(typeof(imageURL))
-                    const response = await axios.put("http://localhost:3000/admin/course",{
+                    const response = await axios.put("https://learnio-api.vercel.app/admin/course",{
                         title:document.querySelector(".title").value,
                         description:document.querySelector(".description").value,
                         price:document.querySelector(".price").value,
