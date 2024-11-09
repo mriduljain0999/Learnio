@@ -61,7 +61,7 @@
             document.querySelector(".signin").addEventListener("click",async function(){
                 try{
 
-                    const response = await axios.post("http://localhost:3000/user/signin",{
+                    const response = await axios.post("https://learnio-api.vercel.app/user/signin",{
                         email:document.querySelector(".email").value,
                         password:document.querySelector(".password").value
                     });
